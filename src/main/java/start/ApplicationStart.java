@@ -2,6 +2,7 @@ package start;
 
 import entity.User;
 import repository.UserRepo;
+import view.LoginView;
 
 import java.util.UUID;
 
@@ -11,7 +12,11 @@ public class ApplicationStart {
         UserRepo ur = new UserRepo();
         User user = new User();
         user.setId(UUID.randomUUID().toString());
-        user.setName("Ana");
+        user.setName("Diana");
+        user.setUsername("dianacristina");
+        user.setPassword("diana");
         ur.insertNewUser(user);
+        LoginView view = new LoginView();
+
     }
 }
