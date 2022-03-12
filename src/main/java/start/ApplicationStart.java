@@ -6,9 +6,7 @@ import entity.UserRole;
 import repository.AdminRepo;
 import repository.UserRepo;
 import service.UserService;
-import view.LoginView;
-import view.RegisterView;
-import view.WelcomeView;
+import view.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,8 +22,10 @@ public class ApplicationStart {
         user.setPassword("diana");
         ur.insertNewUser(user);*/
 
-        //new LoginView();
+        new LoginView();
         //new RegisterView();
-        new WelcomeView();
+        //new WelcomeView();
+        //new ListUsersView();
+        //new ListRequestsView();
     }
 }

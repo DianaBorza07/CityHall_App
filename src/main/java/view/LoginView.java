@@ -1,6 +1,7 @@
 package view;
 
 import controller.AccountController;
+import dto.UserDTO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,7 +77,14 @@ public class LoginView {
         JButton btnLogin = new JButton("Login");
         btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnLogin.setBounds(150, 179, 97, 29);
-        btnLogin.addActionListener(a -> accountController.login(username.getText().toString(),password.getText().toString()));
+        btnLogin.addActionListener(a ->{
+            if(accountController.login(username.getText().toString(),password.getText().toString()))
+                if(accountController.isInAdminRole(new UserDTO(username.getText()))){
+                    new AdminView();
+                    frame.dispose();
+                }
+
+        });
         frame.getContentPane().add(btnLogin);
 
         JLabel lblNewLabel = new JLabel("");

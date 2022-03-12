@@ -1,5 +1,6 @@
 package service;
 
+import dto.UserDTO;
 import dto.UserDTORegister;
 import entity.User;
 import entity.UserRole;
@@ -26,5 +27,12 @@ public class UserService {
         newUser.setUserRole(userRole);
         newUser.setId(UUID.randomUUID().toString());
         userRepo.insertNewUser(newUser);
+    }
+
+    public Boolean isInAdminRole(UserDTO userDTO){
+        User user = userRepo.findUserByUsername(userDTO.getUsername());
+        if(user.getUserRole().getRoleName().equals("Administrator"))
+            return true;
+        return false;
     }
 }

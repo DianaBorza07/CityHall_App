@@ -1,5 +1,6 @@
 package controller;
 
+import dto.UserDTO;
 import dto.UserDTORegister;
 import org.apache.commons.lang3.StringUtils;
 import service.UserService;
@@ -8,17 +9,22 @@ import javax.swing.*;
 
 public class AccountController {
     private UserService userService = new UserService();
-    public void login(String username, String password){
-        if(StringUtils.isEmpty(username)){
-            JOptionPane.showMessageDialog(null, "Please insert username",
-                    "ERROR", JOptionPane.WARNING_MESSAGE); //
+    private StringBuilder errorMessage = new StringBuilder("Missing ");
+    public Boolean login(String username, String password){
+        if(StringUtils.isEmpty(username))
+            errorMessage.append("username");
+        if(StringUtils.isEmpty(password))
+            errorMessage.append(" password");
+        if(!errorMessage.equals("Missing "))
+        {
+            JOptionPane.showMessageDialog(null, errorMessage,
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+            errorMessage.delete(0,errorMessage.length());
+            errorMessage.append("Missing ");
+            return false;
         }
-        else
-            if(StringUtils.isEmpty(password)){
-            JOptionPane.showMessageDialog(null, "Please insert password",
-                    "ERROR", JOptionPane.WARNING_MESSAGE); //
-            }
-            else userService.login(username,password);
+        userService.login(username,password);
+        return true;
     }
     public void register(UserDTORegister userDTORegister){
         if(StringUtils.isEmpty(userDTORegister.getName())){
@@ -39,5 +45,9 @@ public class AccountController {
         }
         else
             userService.register(userDTORegister);
+    }
+
+    public Boolean isInAdminRole(UserDTO userDTO){
+        return userService.isInAdminRole(userDTO);
     }
 }

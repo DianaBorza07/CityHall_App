@@ -1,6 +1,8 @@
 package repository;
 
+import dto.UserDTO;
 import entity.User;
+import entity.UserRole;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,14 +22,6 @@ public class UserRepo {
 		em.close();
 	}
 
-	public User findUserById(String id){
-		EntityManager em = entityManagerFactory.createEntityManager();
-		em.getTransaction().begin();
-		User user = em.find(User.class,id);
-		em.getTransaction().commit();
-		em.close();
-		return  user;
-	}
 
 	public User findUserByCredentials(String username, String password){
 		EntityManager em = entityManagerFactory.createEntityManager();
@@ -42,6 +36,29 @@ public class UserRepo {
 		User user = results.get(0);
 		em.close();
 		return  user;
+	}
+
+	public User findUserByUsername(String username){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		StringBuilder sqlQuery = new StringBuilder("SELECT * FROM user WHERE username='");
+		sqlQuery.append(username);
+		sqlQuery.append("';");
+		Query query = em.createNativeQuery(sqlQuery.toString(),User.class);
+		List<User> results = query.getResultList();
+		User user = results.get(0);
+		em.close();
+		return  user;
+	}
+
+	public UserRole getUserRole(User user){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		String sql = "SELECT roleName from user,userrole where userrole.id = user.id and user.id='"+user.getId()+"';";
+		Query query = em.createNativeQuery(sql,UserRole.class);
+		List<UserRole> userRoles = query.getResultList();
+		em.close();
+		return userRoles.get(0);
 	}
 
 

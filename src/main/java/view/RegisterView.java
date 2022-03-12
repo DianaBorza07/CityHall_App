@@ -1,6 +1,7 @@
 package view;
 
 import controller.AccountController;
+import dto.UserDTO;
 import dto.UserDTORegister;
 
 import java.awt.*;
@@ -109,7 +110,14 @@ public class RegisterView {
             Object[] options = { "OK" };
             int val = JOptionPane.showOptionDialog(null,"Account created successfully!","",JOptionPane.OK_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[0]);
             if(options[0].equals(val) && val>=0);
-                /////////////////////////////////// ui(userDTO)
+            {
+                UserDTO userDTO1 = new UserDTO(userDTO.getName(),userDTO.getUsername(),userDTO.getUserRole());
+                if(accountController.isInAdminRole(userDTO1))
+                {
+                    new AdminView();
+                    frame.dispose();
+                }
+            }
 
         });
         frame.getContentPane().add(btnRegister);
