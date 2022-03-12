@@ -1,22 +1,16 @@
 package view;
 
-import controller.LoginController;
+import controller.AccountController;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
+import javax.swing.*;
+import java.awt.*;
 
 public class LoginView {
 
     private JFrame frame;
     private JTextField username;
     private JTextField password;
-    private LoginController loginController = new LoginController();
+    private AccountController accountController = new AccountController();
 
     /**
      * Create the application.
@@ -33,6 +27,24 @@ public class LoginView {
         frame = new JFrame("Login");
         frame.getContentPane().setBackground(new Color(230, 230, 250));
         frame.getContentPane().setLayout(null);
+
+        Image buttonIcon = new ImageIcon(this.getClass().getResource("/images/back.png")).getImage();
+        Image scaledImg=buttonIcon.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+
+        JLabel lblNewLabel_1 = new JLabel("back");
+        lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        lblNewLabel_1.setBounds(10, 244, 51, 16);
+        frame.getContentPane().add(lblNewLabel_1);
+
+        JButton backButton = new JButton(new ImageIcon(scaledImg));
+        backButton.setBounds(10, 203, 56, 57);
+        backButton.setBorder(BorderFactory.createEmptyBorder());
+        backButton.setContentAreaFilled(false);
+        backButton.addActionListener(e->{
+            new WelcomeView();
+            frame.dispose();
+        });
+        frame.getContentPane().add(backButton);
 
         username = new JTextField();
         username.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -64,8 +76,15 @@ public class LoginView {
         JButton btnLogin = new JButton("Login");
         btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnLogin.setBounds(150, 179, 97, 29);
-        btnLogin.addActionListener(a -> loginController.login(username.getText().toString(),password.getText().toString()));
+        btnLogin.addActionListener(a -> accountController.login(username.getText().toString(),password.getText().toString()));
         frame.getContentPane().add(btnLogin);
+
+        JLabel lblNewLabel = new JLabel("");
+        Image img=new ImageIcon(this.getClass().getResource("/images/background.png")).getImage();
+        Image newImage=img.getScaledInstance(450, 300, Image.SCALE_DEFAULT);
+        lblNewLabel.setIcon(new ImageIcon(newImage));
+        lblNewLabel.setBounds(-17, -13, 470, 308);
+        frame.getContentPane().add(lblNewLabel);
     }
 
     private void initFrame(){
