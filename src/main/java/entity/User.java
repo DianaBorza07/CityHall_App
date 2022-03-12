@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -17,6 +18,17 @@ public class User {
 
 	@Column
 	private String password;
+
+	@OneToMany(mappedBy = "user")
+	private List<Address> addressList;
+
+	@OneToOne
+	@JoinColumn(name = "user_role_id")
+	private UserRole userRole;
+
+	@OneToMany( mappedBy = "requestUser")
+	private List<Request> requests;
+
 
 	public User(String name) {
 		this.name = name;
@@ -54,5 +66,17 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public List<Request> getRequests() {
+		return requests;
 	}
 }
