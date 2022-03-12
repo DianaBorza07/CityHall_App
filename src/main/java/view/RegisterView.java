@@ -107,7 +107,7 @@ public class RegisterView {
             UserDTORegister userDTO = new UserDTORegister(name.getText(), username.getText(), password.getText(),comboBox.getSelectedItem().toString());
             accountController.register(userDTO);
             Object[] options = { "OK" };
-            int val = JOptionPane.showOptionDialog(null,"Successfully created account!","",JOptionPane.OK_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[0]);
+            int val = JOptionPane.showOptionDialog(null,"Account created successfully!","",JOptionPane.OK_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[0]);
             if(options[0].equals(val) && val>=0);
                 /////////////////////////////////// ui(userDTO)
 

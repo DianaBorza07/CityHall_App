@@ -20,7 +20,7 @@ public class UserRepo {
 		em.close();
 	}
 
-	public User findUser(String id){
+	public User findUserById(String id){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		User user = em.find(User.class,id);
