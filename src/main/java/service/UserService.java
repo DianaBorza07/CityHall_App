@@ -2,10 +2,14 @@ package service;
 
 import dto.UserDTO;
 import dto.UserDTORegister;
+import entity.DocumentType;
 import entity.User;
 import entity.UserRole;
 import repository.UserRepo;
 import repository.UserRoleRepo;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UserService {
@@ -37,5 +41,12 @@ public class UserService {
 
     public User findUserByUsername(String username){
         return userRepo.findUserByUsername(username);
+    }
+
+    public List<String> getAllDocumentsName(){
+        List<DocumentType> documentTypes = userRepo.getAllDocuments();
+        List<String> documentNameList = new ArrayList<>();
+        documentTypes.stream().forEach(d->documentNameList.add(d.getDocumentType()));
+        return  documentNameList;
     }
 }

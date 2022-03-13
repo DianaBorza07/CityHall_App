@@ -73,11 +73,20 @@ public class RegularUserView {
         JButton btnUpdate = new JButton("Modify request");
         btnUpdate.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
         btnUpdate.setBounds(139, 240, 170, 35);
+        btnUpdate.addActionListener(a->{
+            new UpdateRequestView(userDTO);
+            frame.dispose();
+        });
         frame.getContentPane().add(btnUpdate);
 
         JButton btnDelete = new JButton("Delete request");
         btnDelete.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
         btnDelete.setBounds(394, 240, 170, 35);
+        btnDelete.addActionListener(a->{
+            RegularUserRequestsView view = new RegularUserRequestsView(userDTO);
+            view.activateButton();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnDelete);
 
         JButton btnLogout = new JButton("Logout");

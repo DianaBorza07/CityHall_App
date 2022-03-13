@@ -38,7 +38,7 @@ public class AccountController {
             insertMessage.append("password ");
         if(StringUtils.isEmpty(userDTORegister.getUserRole()))
             insertMessage.append("role ");
-        if(!insertMessage.equals("Please insert ")) {
+        if(insertMessage.compareTo(new StringBuilder("Please insert "))==0) {
             if (userService.register(userDTORegister))
                 return  true;
             else {

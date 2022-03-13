@@ -28,9 +28,5 @@ public class ApplicationStart {
         //new ListUsersView();
         //new ListRequestsView();
         //new AddNewDocTypeView();
-        long millis=System.currentTimeMillis();
-        //Date date = new Date(Calendar.getInstance().getTime().getTime());
-        Date date = new Date(millis);
-        System.out.println(date);
     }
 }

@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminService {
+public class AdminService extends UserService{
     private AdminRepo adminRepo = new AdminRepo();
 
     public List<UserDTO> findAllUsers(){
@@ -33,12 +33,12 @@ public class AdminService {
         return adminRepo.createNewDocumentType(doc);
     }
 
-    public List<String> getAllDocumentsName(){
+    /*public List<String> getAllDocumentsName(){
         List<DocumentType> documentTypes = adminRepo.getAllDocuments();
         List<String> documentNameList = new ArrayList<>();
         documentTypes.stream().forEach(d->documentNameList.add(d.getDocumentType()));
         return  documentNameList;
-    }
+    }*/
 
     public void deleteSelectedDocument(String doc){
         adminRepo.deleteDocument(doc);

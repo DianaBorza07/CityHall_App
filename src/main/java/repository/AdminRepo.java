@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class AdminRepo {
+public class AdminRepo extends UserRepo{
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
 
     public List<User> findAllUsers(){
@@ -41,19 +41,6 @@ public class AdminRepo {
         return true;
     }
 
-    public DocumentType findDocumentByName(String documentName){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        String sql = "SELECT * FROM documenttype where documentType='"+documentName+"';";
-        Query query = em.createNativeQuery(sql,DocumentType.class);
-        List<DocumentType> documentTypes = query.getResultList();
-        DocumentType document = null;
-        if(documentTypes.size()!=0)
-               document = documentTypes.get(0);
-        em.close();
-        return document;
-    }
-
     public void deleteDocument(String documentName){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -74,29 +61,6 @@ public class AdminRepo {
         return results;
     }
 
-    public List<DocumentType> getAllDocuments(){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        String sql = "SELECT * FROM documenttype;";
-        Query query = em.createNativeQuery(sql,DocumentType.class);
-        List<DocumentType> documentTypes = query.getResultList();
-        em.close();
-        return documentTypes;
-    }
-
-    public Request findRequestByName(String name){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        String sql = "SELECT * FROM request where description='"+name+"';";
-        Query query = em.createNativeQuery(sql,DocumentType.class);
-        List<Request> requests = query.getResultList();
-        Request request = null;
-        if(requests.size()!=0)
-            request = requests.get(0);
-        em.close();
-        return request;
-    }
-
     public void deleteRequest(String request){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -105,19 +69,6 @@ public class AdminRepo {
         em.remove(request1);
         em.getTransaction().commit();
         em.close();
-    }
-
-    public Request findRequestByNameAndDate(String name, Date date){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        String sql = "SELECT * FROM request where description='"+name+"' and date='"+date.toString()+"';";
-        Query query = em.createNativeQuery(sql,Request.class);
-        List<Request> requests = query.getResultList();
-        Request request = null;
-        if(requests.size()!=0)
-            request = requests.get(0);
-        em.close();
-        return request;
     }
 
     public void approveRequest(String requestDescription, Date date){
@@ -130,7 +81,6 @@ public class AdminRepo {
             em.getTransaction().commit();
             em.close();
         }
-        else System.out.println("ceva");
     }
 
 

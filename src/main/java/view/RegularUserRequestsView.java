@@ -9,14 +9,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class RegularUserRequestsView {
@@ -24,6 +17,7 @@ public class RegularUserRequestsView {
     private JFrame frame;
     private UserDTO user;
     private JTable table;
+    private JButton btnDelete;
     private RegularUserController regularUserController = new RegularUserController();
 
     public RegularUserRequestsView() {
@@ -89,6 +83,24 @@ public class RegularUserRequestsView {
         lblNewLabel.setBounds(158, 10, 385, 72);
         frame.getContentPane().add(lblNewLabel);
 
+        btnDelete = new JButton("Delete");
+        btnDelete.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 18));
+        btnDelete.setBounds(553, 46, 113, 33);
+        btnDelete.setVisible(false);
+        btnDelete.addActionListener(a->{
+            int selectedRow = table.getSelectedRow();
+            if(selectedRow!=-1) {
+                regularUserController.deleteRequest(table.getValueAt(selectedRow, 0).toString(), table.getValueAt(selectedRow, 2).toString());
+                JOptionPane.showMessageDialog(null, "Request approved ",
+                        "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Please select one item ",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            table = regularUserController.listRequests(user,table);
+        });
+        frame.getContentPane().add(btnDelete);
+
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
         lblNewLabel_2.setBounds(0, 0, 684, 409);
@@ -101,8 +113,12 @@ public class RegularUserRequestsView {
     private void initFrame(){
         frame.setBounds(100, 100, 711, 448);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        regularUserController.listRequests(user,table);
+        table = regularUserController.listRequests(user,table);
         frame.setVisible(true);
+    }
+
+    public void activateButton(){
+        btnDelete.setVisible(true);
     }
 
 }

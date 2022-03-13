@@ -1,6 +1,5 @@
 package repository;
 
-import entity.User;
 import entity.UserRole;
 
 import javax.persistence.EntityManager;

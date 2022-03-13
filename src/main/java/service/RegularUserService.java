@@ -4,17 +4,16 @@ import dto.UserDTO;
 import entity.DocumentType;
 import entity.Request;
 import entity.User;
-import repository.AdminRepo;
 import repository.RegularUserRepo;
 
+import javax.print.Doc;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
-public class RegularUserService {
+public class RegularUserService extends UserService{
     private RegularUserRepo regularUserRepo = new RegularUserRepo();
 
     public List<Request> getRequests(UserDTO user){
@@ -22,10 +21,8 @@ public class RegularUserService {
     }
 
     public Boolean addNewRequest(UserDTO userDTO, String description, String docName) throws ParseException {
-        AdminRepo adminRepo = new AdminRepo();
-        DocumentType documentType = adminRepo.findDocumentByName(docName);
+        DocumentType documentType = regularUserRepo.findDocumentByName(docName);
         long millis=System.currentTimeMillis();
-        //Date date = new Date(Calendar.getInstance().getTime().getTime());
         Date date = new Date(millis);
         User user = regularUserRepo.findUserById(userDTO.getId());
         Request request = new Request();
@@ -39,5 +36,15 @@ public class RegularUserService {
             return false;
         regularUserRepo.insertNewRequest(request);
         return true;
+    }
+
+    public void deleteRequest(String description,Date date){
+        Request request = regularUserRepo.findRequestByNameAndDate(description,date);
+        regularUserRepo.deleteRequest(request);
+    }
+
+    public void updateRequest(String requestName, String newName, String documentType){
+        DocumentType document = regularUserRepo.findDocumentByName(documentType);
+        regularUserRepo.updateRequest(requestName,newName,document);
     }
 }
