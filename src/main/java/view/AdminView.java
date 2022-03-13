@@ -48,11 +48,20 @@ public class AdminView {
         JButton btnDeleteRequest = new JButton("Delete request");
         btnDeleteRequest.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnDeleteRequest.setBounds(339, 238, 150, 50);
+        btnDeleteRequest.addActionListener(a->{
+            new DeleteRequestView();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnDeleteRequest);
 
         JButton btnApproveRequest = new JButton("Approve request");
         btnApproveRequest.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnApproveRequest.setBounds(91, 238, 150, 50);
+        btnApproveRequest.addActionListener(a->{
+            ListRequestsView list =new ListRequestsView();
+            list.activateButton();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnApproveRequest);
 
         JButton btnUsers = new JButton("View all users");
@@ -67,14 +76,19 @@ public class AdminView {
         JButton btnViewRequests = new JButton("View all requests");
         btnViewRequests.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnViewRequests.setBounds(339, 168, 150, 50);
+        btnViewRequests.addActionListener(a->{
+            new ListRequestsView();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnViewRequests);
 
         JButton btnDeleteDoc = new JButton("<html>Delete document type</html>");
         btnDeleteDoc.setVerticalAlignment(SwingConstants.TOP);
-        btnDeleteDoc.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+        btnDeleteDoc.addActionListener(a-> {
+                    new DeleteDocumentView();
+                    frame.dispose();
+                }
+        );
         btnDeleteDoc.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnDeleteDoc.setBounds(91, 168, 150, 50);
         frame.getContentPane().add(btnDeleteDoc);
@@ -83,6 +97,10 @@ public class AdminView {
         btnNewType.setVerticalAlignment(SwingConstants.TOP);
         btnNewType.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnNewType.setBounds(339, 98, 150, 50);
+        btnNewType.addActionListener(a->{
+            new AddNewDocTypeView();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnNewType);
 
         JLabel lblTitle = new JLabel("Welcome");

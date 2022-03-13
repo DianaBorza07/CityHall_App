@@ -106,16 +106,19 @@ public class RegisterView {
         btnRegister.setBounds(197, 402, 125, 43);
         btnRegister.addActionListener(a-> {
             UserDTORegister userDTO = new UserDTORegister(name.getText(), username.getText(), password.getText(),comboBox.getSelectedItem().toString());
-            accountController.register(userDTO);
-            Object[] options = { "OK" };
-            int val = JOptionPane.showOptionDialog(null,"Account created successfully!","",JOptionPane.OK_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[0]);
-            if(options[0].equals(val) && val>=0);
-            {
-                UserDTO userDTO1 = new UserDTO(userDTO.getName(),userDTO.getUsername(),userDTO.getUserRole());
-                if(accountController.isInAdminRole(userDTO1))
+            if(accountController.register(userDTO)) {
+                Object[] options = {"OK"};
+                int val = JOptionPane.showOptionDialog(null, "Account created successfully!", "", JOptionPane.OK_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+                if (options[0].equals(val) && val >= 0) ;
                 {
-                    new AdminView();
-                    frame.dispose();
+                    UserDTO userDTO1 = new UserDTO(userDTO.getName(), userDTO.getUsername(), userDTO.getUserRole());
+                    name.setText("");
+                    password.setText("");
+                    username.setText("");
+                    if (accountController.isInAdminRole(userDTO1)) {
+                        new AdminView();
+                        frame.dispose();
+                    }
                 }
             }
 

@@ -14,12 +14,15 @@ public class UserRepo {
 	
 	private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
 	
-	public void insertNewUser(User user) {
+	public Boolean insertNewUser(User user) {
+		if(findUserByUsername(user.getUsername())!=null)
+			return false;
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(user);
 		em.getTransaction().commit();
 		em.close();
+		return true;
 	}
 
 
@@ -46,7 +49,9 @@ public class UserRepo {
 		sqlQuery.append("';");
 		Query query = em.createNativeQuery(sqlQuery.toString(),User.class);
 		List<User> results = query.getResultList();
-		User user = results.get(0);
+		User user=null;
+		if(results.size()!=0)
+			user = results.get(0);
 		em.close();
 		return  user;
 	}

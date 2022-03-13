@@ -22,10 +22,12 @@ public class ApplicationStart {
         user.setPassword("diana");
         ur.insertNewUser(user);*/
 
-        new LoginView();
+        //new LoginView();
         //new RegisterView();
         //new WelcomeView();
         //new ListUsersView();
         //new ListRequestsView();
+        //new AddNewDocTypeView();
+        new AdminView();
     }
 }

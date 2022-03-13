@@ -22,7 +22,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Address> addressList;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "user_role_id")
 	private UserRole userRole;
 

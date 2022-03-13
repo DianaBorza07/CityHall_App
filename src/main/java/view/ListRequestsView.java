@@ -8,14 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class ListRequestsView {
@@ -23,6 +16,7 @@ public class ListRequestsView {
     private JFrame frame;
     private AdminController adminController = new AdminController();
     private JTable table;
+    private JButton btnApprove;
 
     public ListRequestsView() {
         initialize();
@@ -33,12 +27,34 @@ public class ListRequestsView {
         frame = new JFrame();
         frame.getContentPane().setLayout(null);
 
+        btnApprove = new JButton("Approve");
+        btnApprove.setBackground(new Color(255, 228, 225));
+        btnApprove.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+        btnApprove.setBounds(553, 44, 117, 33);
+        btnApprove.setVisible(false);
+        btnApprove.addActionListener(a->{
+            if(table.getSelectedRow() == -1)
+                JOptionPane.showMessageDialog(null, "Please select one item ",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            else {
+                adminController.approveRequest(table);
+                JOptionPane.showMessageDialog(null, "Request approved ",
+                        "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+            }
+            table = adminController.listRequestsInTable(table);
+        });
+        frame.getContentPane().add(btnApprove);
+
         Image buttonIcon = new ImageIcon(this.getClass().getResource("/images/back.png")).getImage();
         Image scaledImg=buttonIcon.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         JButton backButton = new JButton(new ImageIcon(scaledImg));
         backButton.setBounds(10, 10, 56, 57);
         backButton.setBorder(BorderFactory.createEmptyBorder());
         backButton.setContentAreaFilled(false);
+        backButton.addActionListener(a->{
+            new AdminView();
+            frame.dispose();
+        });
         frame.getContentPane().add(backButton);
 
         JLabel lblNewLabel_1 = new JLabel("back");
@@ -92,6 +108,10 @@ public class ListRequestsView {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         adminController.listRequestsInTable(table);
         frame.setVisible(true);
+    }
+
+    public void activateButton(){
+        btnApprove.setVisible(true);
     }
 }
 

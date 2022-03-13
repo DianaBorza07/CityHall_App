@@ -7,12 +7,18 @@
     <list default="true" id="002231c6-3fc9-4b07-8683-a13db9b57732" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/DocumentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/DocumentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +114,7 @@
       <updated>1646322645170</updated>
       <workItem from="1646322649417" duration="3325000" />
       <workItem from="1646924574463" duration="6739000" />
-      <workItem from="1647076339089" duration="36369000" />
+      <workItem from="1647076339089" duration="49802000" />
     </task>
     <servers />
   </component>

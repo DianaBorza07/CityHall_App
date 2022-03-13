@@ -20,13 +20,12 @@ public class UserService {
             System.out.println("User logged in!");
     }
 
-    public void register(UserDTORegister user){
+    public Boolean register(UserDTORegister user){
         UserRole userRole = userRoleRepo.findUserRoleByName(user.getUserRole());
-        System.out.println("User Role:"+userRole.getRoleName());
         User newUser = user.userDTOToUser();
         newUser.setUserRole(userRole);
         newUser.setId(UUID.randomUUID().toString());
-        userRepo.insertNewUser(newUser);
+        return userRepo.insertNewUser(newUser);
     }
 
     public Boolean isInAdminRole(UserDTO userDTO){

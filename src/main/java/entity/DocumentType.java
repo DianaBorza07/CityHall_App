@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -12,8 +13,8 @@ public class DocumentType {
     @Column
     private String documentType;
 
-    @OneToOne( mappedBy = "documentType")
-    private Request request;
+    @OneToMany( mappedBy = "documentType")
+    private List<Request> requests;
 
     public DocumentType() {}
 
@@ -33,13 +34,11 @@ public class DocumentType {
         this.documentType = documentType;
     }
 
-    public Request getRequest() {
-        return request;
+    public List<Request> getRequests() {
+        return requests;
     }
 
-    public void setRequest(Request request) {
-        this.request = request;
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
     }
-
-
 }

@@ -2,10 +2,13 @@ package controller;
 
 import dto.UserDTO;
 import entity.Request;
+import org.apache.commons.lang3.StringUtils;
 import service.AdminService;
-import service.UserService;
 
 import javax.swing.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AdminController {
@@ -44,6 +47,70 @@ public class AdminController {
             row++;
         }
         return table;
+    }
+
+    public void addNewDocType(String doc){
+        if(StringUtils.isEmpty(doc))
+            JOptionPane.showMessageDialog(null, "Missing document type",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        else {
+            if(adminService.insertNewDocType(doc))
+            JOptionPane.showMessageDialog(null, "Document added",
+                "CONFIRM", JOptionPane.PLAIN_MESSAGE);
+            else {
+                JOptionPane.showMessageDialog(null, "Document already exists",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
+    public JComboBox addDocuments(JComboBox comboBox){
+        List<String> documents = adminService.getAllDocumentsName();
+        documents.stream().forEach(d->comboBox.addItem(d));
+        return comboBox;
+    }
+
+    public void deleteDocument(String docName){
+        if(StringUtils.isEmpty(docName)){
+            JOptionPane.showMessageDialog(null, "Please select one item ",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            adminService.deleteSelectedDocument(docName);
+            JOptionPane.showMessageDialog(null, "Document type deleted successfully",
+                    "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    public JComboBox listRequestsInCombo(JComboBox comboBox){
+        List<Request> requests = adminService.findAllRequests();
+        requests.stream().forEach(d->comboBox.addItem(d.getDescription()));
+        return comboBox;
+    }
+
+    public void deleteRequest(String request){
+        if(StringUtils.isEmpty(request)){
+            JOptionPane.showMessageDialog(null, "Please select one item ",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            adminService.deleteSelectedDocument(request);
+            JOptionPane.showMessageDialog(null, "Request deleted successfully",
+                    "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    public void approveRequest(JTable table){
+        int row = table.getSelectedRow();
+        String description = table.getValueAt(row,0).toString();
+        String date = table.getValueAt(row,2).toString();
+        Date date1 = null;
+        try {
+            date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        adminService.approveRequest(description,date1);
     }
 
 }

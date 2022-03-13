@@ -19,7 +19,7 @@ public class Request {
     @Column
     private Boolean approved;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "document_type_id")
     private DocumentType documentType;
 

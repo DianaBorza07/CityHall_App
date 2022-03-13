@@ -1,11 +1,13 @@
 package service;
 
 import dto.UserDTO;
+import entity.DocumentType;
 import entity.Request;
 import entity.User;
 import repository.AdminRepo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AdminService {
@@ -26,4 +28,23 @@ public class AdminService {
         List<Request> requests = adminRepo.getAllRequests();
         return requests;
     }
+
+    public Boolean insertNewDocType(String doc){
+        return adminRepo.createNewDocumentType(doc);
+    }
+
+    public List<String> getAllDocumentsName(){
+        List<DocumentType> documentTypes = adminRepo.getAllDocuments();
+        List<String> documentNameList = new ArrayList<>();
+        documentTypes.stream().forEach(d->documentNameList.add(d.getDocumentType()));
+        return  documentNameList;
+    }
+
+    public void deleteSelectedDocument(String doc){
+        adminRepo.deleteDocument(doc);
+    }
+
+    public void deleteSelectedRequest(String request){adminRepo.deleteRequest(request);}
+
+    public void approveRequest(String description, Date date){ adminRepo.approveRequest(description,date); }
 }
