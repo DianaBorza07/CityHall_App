@@ -8,6 +8,7 @@ import repository.UserRepo;
 import service.UserService;
 import view.*;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,13 +22,15 @@ public class ApplicationStart {
         user.setUsername("dianacristina");
         user.setPassword("diana");
         ur.insertNewUser(user);*/
-
-        //new LoginView();
+        new LoginView();
         //new RegisterView();
         //new WelcomeView();
         //new ListUsersView();
         //new ListRequestsView();
         //new AddNewDocTypeView();
-        new AdminView();
+        long millis=System.currentTimeMillis();
+        //Date date = new Date(Calendar.getInstance().getTime().getTime());
+        Date date = new Date(millis);
+        System.out.println(date);
     }
 }

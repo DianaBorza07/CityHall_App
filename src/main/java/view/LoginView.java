@@ -2,6 +2,7 @@ package view;
 
 import controller.AccountController;
 import dto.UserDTO;
+import entity.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,17 +14,11 @@ public class LoginView {
     private JTextField password;
     private AccountController accountController = new AccountController();
 
-    /**
-     * Create the application.
-     */
     public LoginView() {
         initialize();
         initFrame();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
         frame = new JFrame("Login");
         frame.getContentPane().setBackground(new Color(230, 230, 250));
@@ -82,6 +77,11 @@ public class LoginView {
                 if(accountController.isInAdminRole(new UserDTO(username.getText()))){
                     new AdminView();
                     frame.dispose();
+                }
+            else {
+                User loggedUser = accountController.findUser(username.getText());
+                new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getUsername(),loggedUser.getUserRole().getRoleName()));
+                frame.dispose();
                 }
 
         });

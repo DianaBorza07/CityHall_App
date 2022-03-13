@@ -8,25 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.print.Doc;
-import java.util.ArrayList;
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 public class AdminRepo {
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
-
-
-    public User findUserById(String id){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        User user = em.find(User.class,id);
-        em.getTransaction().commit();
-        em.close();
-        return  user;
-    }
 
     public List<User> findAllUsers(){
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -123,7 +111,7 @@ public class AdminRepo {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         String sql = "SELECT * FROM request where description='"+name+"' and date='"+date.toString()+"';";
-        Query query = em.createNativeQuery(sql,DocumentType.class);
+        Query query = em.createNativeQuery(sql,Request.class);
         List<Request> requests = query.getResultList();
         Request request = null;
         if(requests.size()!=0)
@@ -142,6 +130,7 @@ public class AdminRepo {
             em.getTransaction().commit();
             em.close();
         }
+        else System.out.println("ceva");
     }
 
 

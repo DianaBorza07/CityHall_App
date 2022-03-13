@@ -3,6 +3,7 @@ package view;
 import controller.AccountController;
 import dto.UserDTO;
 import dto.UserDTORegister;
+import entity.User;
 
 import java.awt.*;
 
@@ -117,6 +118,11 @@ public class RegisterView {
                     username.setText("");
                     if (accountController.isInAdminRole(userDTO1)) {
                         new AdminView();
+                        frame.dispose();
+                    }
+                    else {
+                        User loggedUser = accountController.findUser(userDTO1.getUsername());
+                        new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getUsername(),loggedUser.getUserRole().getRoleName()));
                         frame.dispose();
                     }
                 }

@@ -1,0 +1,55 @@
+package repository;
+
+import dto.UserDTO;
+import entity.Request;
+import entity.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.math.BigInteger;
+import java.util.List;
+
+public class RegularUserRepo {
+
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
+
+    public User findUserById(String id){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        User user = em.find(User.class,id);
+        em.getTransaction().commit();
+        em.close();
+        return  user;
+    }
+
+    public List<Request> findRequests(UserDTO user){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        String sql = "SELECT * FROM request where user_id='"+user.getId()+"';";
+        Query query = em.createNativeQuery(sql,Request.class);
+        List<Request> requests = query.getResultList();
+        em.close();
+        return requests;
+    }
+
+    public void insertNewRequest(Request request) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(request);
+        em.getTransaction().commit();
+        em.close();
+
+    }
+
+    public BigInteger getNumberOfRequests(Request request){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        String sql = "SELECT count(id) FROM request where user_id='"+request.getRequestUser().getId()+"' and document_type_id='"+request.getDocumentType().getId()+"';";
+        Query query = em.createNativeQuery(sql);
+        BigInteger val = (BigInteger) query.getSingleResult();
+        em.close();
+        return val;
+    }
+}

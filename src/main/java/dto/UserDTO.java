@@ -3,6 +3,9 @@ package dto;
 import entity.User;
 
 public class UserDTO {
+
+    private String id;
+
     private String name;
 
     private String username;
@@ -10,6 +13,13 @@ public class UserDTO {
     private String userRole;
 
     public UserDTO(String name, String username,String role){
+        this.name = name;
+        this.username = username;
+        this.userRole = role;
+    }
+
+    public UserDTO(String id,String name, String username,String role){
+        this.id = id;
         this.name = name;
         this.username = username;
         this.userRole = role;
@@ -54,7 +64,15 @@ public class UserDTO {
         User user = new User();
         user.setName(this.name);
         user.setUsername(this.username);
+        user.setId(id);
         return user;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

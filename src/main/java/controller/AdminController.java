@@ -6,9 +6,9 @@ import org.apache.commons.lang3.StringUtils;
 import service.AdminService;
 
 import javax.swing.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class AdminController {
@@ -40,10 +40,10 @@ public class AdminController {
         for (Request result:
                 results ) {
             table.setValueAt(result.getDescription(),row,0);
-            //table.setValueAt(result.getDocumentType().getDocumentType(),row,1);
+            table.setValueAt(result.getDocumentType().getDocumentType(),row,1);
             table.setValueAt(result.getDate(),row,2);
             table.setValueAt(result.getApproved(),row,3);
-            //table.setValueAt(result.getRequestUser().getName(),row,4);
+            table.setValueAt(result.getRequestUser().getName(),row,4);
             row++;
         }
         return table;
@@ -104,12 +104,8 @@ public class AdminController {
         int row = table.getSelectedRow();
         String description = table.getValueAt(row,0).toString();
         String date = table.getValueAt(row,2).toString();
-        Date date1 = null;
-        try {
-            date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date date1 = Date.valueOf(date);
+        System.out.println(date1);
         adminService.approveRequest(description,date1);
     }
 

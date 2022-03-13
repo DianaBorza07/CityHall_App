@@ -1,6 +1,5 @@
 package repository;
 
-import dto.UserDTO;
 import entity.User;
 import entity.UserRole;
 

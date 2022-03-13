@@ -2,6 +2,7 @@ package controller;
 
 import dto.UserDTO;
 import dto.UserDTORegister;
+import entity.User;
 import org.apache.commons.lang3.StringUtils;
 import service.UserService;
 
@@ -11,6 +12,7 @@ public class AccountController {
     private UserService userService = new UserService();
     private StringBuilder errorMessage = new StringBuilder("Missing ");
     private StringBuilder insertMessage = new StringBuilder("Please insert ");
+
     public Boolean login(String username, String password){
         if(StringUtils.isEmpty(username))
             errorMessage.append("username");
@@ -56,5 +58,9 @@ public class AccountController {
 
     public Boolean isInAdminRole(UserDTO userDTO){
         return userService.isInAdminRole(userDTO);
+    }
+
+    public User findUser(String username){
+        return userService.findUserByUsername(username);
     }
 }
