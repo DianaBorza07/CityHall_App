@@ -6,17 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="002231c6-3fc9-4b07-8683-a13db9b57732" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRoleRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewDocTypeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewDocTypeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/DeleteRequestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/DeleteRequestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/RegularUserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegularUserView.java" afterDir="false" />
     </list>
@@ -116,7 +119,7 @@
       <workItem from="1646322649417" duration="3325000" />
       <workItem from="1646924574463" duration="6739000" />
       <workItem from="1647076339089" duration="63666000" />
-      <workItem from="1647201693277" duration="6639000" />
+      <workItem from="1647201693277" duration="20003000" />
     </task>
     <servers />
   </component>

@@ -43,6 +43,11 @@ public class AdminView {
         JButton btnSearch = new JButton("Search request");
         btnSearch.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
         btnSearch.setBounds(91, 308, 150, 50);
+        btnSearch.addActionListener(a->{
+            ListRequestsView view =new ListRequestsView();
+            view.activateSearch();
+            frame.dispose();
+        });
         frame.getContentPane().add(btnSearch);
 
         JButton btnDeleteRequest = new JButton("Delete request");

@@ -58,7 +58,7 @@ public class AddNewDocTypeView {
 
 
         JLabel lblNewLabel = new JLabel("");
-        Image img=new ImageIcon(this.getClass().getResource("/images/background.png")).getImage();
+        Image img=new ImageIcon(this.getClass().getResource("/images/background5.jpg")).getImage();
         Image imgScaled = img.getScaledInstance(500, 300, Image.SCALE_DEFAULT);
 
         JLabel lblText = new JLabel("Insert document name");

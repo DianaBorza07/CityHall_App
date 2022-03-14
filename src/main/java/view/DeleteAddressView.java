@@ -1,6 +1,6 @@
 package view;
-
-import controller.AdminController;
+import controller.RegularUserController;
+import dto.UserDTO;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,13 +13,20 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class DeleteRequestView {
+public class DeleteAddressView {
 
     private JFrame frame;
+    private UserDTO userDTO;
     private JComboBox comboBox;
-    private AdminController adminController = new AdminController();
+    private RegularUserController regularUserController = new RegularUserController();
 
-    public DeleteRequestView() {
+    public DeleteAddressView() {
+        initialize();
+        initFrame();
+    }
+
+    public DeleteAddressView(UserDTO userDTO) {
+        this.userDTO= userDTO;
         initialize();
         initFrame();
     }
@@ -28,17 +35,17 @@ public class DeleteRequestView {
         frame = new JFrame();
         frame.getContentPane().setLayout(null);
 
-        JLabel lblTitle = new JLabel("Delete request");
+        JLabel lblTitle = new JLabel("Delete address");
         lblTitle.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 24));
         lblTitle.setBounds(126, 21, 214, 32);
         frame.getContentPane().add(lblTitle);
 
-        JLabel lblSelect = new JLabel("Select request");
+        JLabel lblSelect = new JLabel("Select address");
         lblSelect.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
         lblSelect.setBounds(57, 105, 153, 24);
         frame.getContentPane().add(lblSelect);
 
-        comboBox = new JComboBox();
+        comboBox= new JComboBox();
         comboBox.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
         comboBox.setBounds(196, 101, 214, 32);
         frame.getContentPane().add(comboBox);
@@ -57,22 +64,26 @@ public class DeleteRequestView {
         backButton.setBorder(BorderFactory.createEmptyBorder());
         backButton.setContentAreaFilled(false);
         backButton.addActionListener(a->{
-            new AdminView();
+            new RegularUserView((userDTO));
             frame.dispose();
         });
         frame.getContentPane().add(backButton);
+
+
+        JLabel lblNewLabel = new JLabel("");
+        Image img=new ImageIcon(this.getClass().getResource("/images/background5.jpg")).getImage();
+        Image imgScaled = img.getScaledInstance(500, 300, Image.SCALE_DEFAULT);
 
         Image buttonIcon1 = new ImageIcon(this.getClass().getResource("/images/ok.png")).getImage();
         Image scaledImg1=buttonIcon1.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
 
         JButton confirmButton = new JButton(new ImageIcon(scaledImg1));
-        confirmButton.setBounds(236, 160, 85, 57);
+        confirmButton.setBounds(236, 171, 85, 57);
         confirmButton.setBorder(BorderFactory.createEmptyBorder());
         confirmButton.setContentAreaFilled(false);
         confirmButton.addActionListener(a->{
-            adminController.deleteRequest(comboBox.getSelectedItem().toString());
-            comboBox.removeAllItems();
-            comboBox = adminController.listRequestsInCombo(comboBox);
+            regularUserController.deleteAddress(userDTO,comboBox.getSelectedItem().toString());
+            comboBox = regularUserController.listAddressList(userDTO,comboBox);
         });
         frame.getContentPane().add(confirmButton);
 
@@ -81,20 +92,17 @@ public class DeleteRequestView {
         lblOk.setBounds(246, 213, 104, 40);
         frame.getContentPane().add(lblOk);
 
-        JLabel lblNewLabel = new JLabel("");
-        Image img=new ImageIcon(this.getClass().getResource("/images/background4.jpg")).getImage();
-        Image imgScaled = img.getScaledInstance(500, 300, Image.SCALE_DEFAULT);
         lblNewLabel.setIcon(new ImageIcon(imgScaled));
         lblNewLabel.setBounds(0, 0, 436, 263);
         frame.getContentPane().add(lblNewLabel);
+
     }
 
     private void initFrame(){
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        comboBox=adminController.listRequestsInCombo(comboBox);
+        comboBox = regularUserController.listAddressList(userDTO,comboBox);
         frame.setVisible(true);
     }
 
 }
-

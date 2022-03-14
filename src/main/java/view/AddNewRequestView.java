@@ -80,6 +80,7 @@ public class AddNewRequestView {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            description.setText("");
         });
         frame.getContentPane().add(confirmButton);
 

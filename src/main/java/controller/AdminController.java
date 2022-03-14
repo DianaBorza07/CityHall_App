@@ -32,8 +32,10 @@ public class AdminController {
         return table;
     }
 
-    public JTable listRequestsInTable(JTable table){
-        List<Request> results = adminService.findAllRequests();
+    public JTable listRequestsInTable(JTable table, String document){
+        List<Request> results;
+        if(document == null) results = adminService.findAllRequests();
+        else results = adminService.getRequestsByType(document);
         int row = 0;
         for (Request result:
                 results ) {
@@ -92,7 +94,7 @@ public class AdminController {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else {
-            adminService.deleteSelectedDocument(request);
+            adminService.deleteSelectedRequest(request);
             JOptionPane.showMessageDialog(null, "Request deleted successfully",
                     "SUCCESS", JOptionPane.PLAIN_MESSAGE);
         }

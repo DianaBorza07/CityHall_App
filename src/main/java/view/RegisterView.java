@@ -14,7 +14,7 @@ public class RegisterView {
     private JFrame frame;
     private JTextField name;
     private JTextField username;
-    private JTextField password;
+    private JPasswordField password;
     private AccountController accountController = new AccountController();
 
     public RegisterView() {
@@ -83,7 +83,7 @@ public class RegisterView {
         frame.getContentPane().add(username);
         username.setColumns(10);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
         password.setBounds(197, 265, 276, 24);
         frame.getContentPane().add(password);

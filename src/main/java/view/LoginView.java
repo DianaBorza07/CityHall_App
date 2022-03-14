@@ -11,7 +11,7 @@ public class LoginView {
 
     private JFrame frame;
     private JTextField username;
-    private JTextField password;
+    private JPasswordField password;
     private AccountController accountController = new AccountController();
 
     public LoginView() {
@@ -48,7 +48,7 @@ public class LoginView {
         frame.getContentPane().add(username);
         username.setColumns(10);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setFont(new Font("Tahoma", Font.PLAIN, 13));
         password.setBounds(206, 115, 186, 29);
         frame.getContentPane().add(password);

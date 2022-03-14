@@ -45,11 +45,19 @@ public class RegularUserView {
         JButton btnAddAddress = new JButton("Add new building");
         btnAddAddress.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
         btnAddAddress.setBounds(139, 110, 170, 35);
+        btnAddAddress.addActionListener(a->{
+            new AddNewAddressView(userDTO);
+            frame.dispose();
+        });
         frame.getContentPane().add(btnAddAddress);
 
         JButton btnDeleteAddress = new JButton("Remove building");
         btnDeleteAddress.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
         btnDeleteAddress.setBounds(394, 110, 170, 35);
+        btnDeleteAddress.addActionListener(a->{
+            new DeleteAddressView(userDTO);
+            frame.dispose();
+        });
         frame.getContentPane().add(btnDeleteAddress);
 
         JButton btnView = new JButton("View my requests");
@@ -91,12 +99,21 @@ public class RegularUserView {
 
         JButton btnLogout = new JButton("Logout");
         btnLogout.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
-        btnLogout.setBounds(275, 310, 170, 35);
+        btnLogout.setBounds(394, 308, 170, 35);
         btnLogout.addActionListener(a->{
             new WelcomeView();
             frame.dispose();
         });
         frame.getContentPane().add(btnLogout);
+
+        JButton btnAddress = new JButton("View my addresses");
+        btnAddress.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+        btnAddress.setBounds(139, 308, 170, 35);
+        btnAddress.addActionListener(a->{
+            new AddressView(userDTO);
+            frame.dispose();
+        });
+        frame.getContentPane().add(btnAddress);
 
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setBounds(0, -11, 693, 422);

@@ -5,31 +5,32 @@ import dto.UserDTO;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.*;
-import javax.swing.plaf.TableHeaderUI;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-public class RegularUserRequestsView {
+public class AddressView {
 
     private JFrame frame;
-    private UserDTO user;
-    private JTable table;
-    private JButton btnDelete;
     private RegularUserController regularUserController = new RegularUserController();
+    private UserDTO userDTO;
+    private JTable table;
 
-    public RegularUserRequestsView() {
+    public AddressView() {
         initialize();
         initFrame();
     }
-
-    public RegularUserRequestsView(UserDTO user) {
-        this.user = user;
+    public AddressView(UserDTO userDTO) {
+        this.userDTO = userDTO;
         initialize();
         initFrame();
     }
@@ -45,7 +46,7 @@ public class RegularUserRequestsView {
         backButton.setBorder(BorderFactory.createEmptyBorder());
         backButton.setContentAreaFilled(false);
         backButton.addActionListener(a->{
-            new RegularUserView(user);
+            new RegularUserView(userDTO);
             frame.dispose();
         });
         frame.getContentPane().add(backButton);
@@ -67,53 +68,22 @@ public class RegularUserRequestsView {
         table.setModel(new DefaultTableModel(
                 new Object[30][30] ,
                 new String[] {
-                        "Description","Document type","Date","Approved"
+                        "City","Street"
                 }
         ));
 
-        table.getColumnModel().getColumn(0).setPreferredWidth(40);
-        table.getColumnModel().getColumn(1).setPreferredWidth(40);
-        table.getColumnModel().getColumn(2).setPreferredWidth(40);
-        table.getColumnModel().getColumn(3).setPreferredWidth(40);
+        table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.getColumnModel().getColumn(1).setPreferredWidth(80);
         table.getTableHeader().setPreferredSize(new Dimension(scrollPane.getWidth(),20));
         table.getTableHeader().setReorderingAllowed(false);
         table.setRowHeight(35);
 
 
-        JLabel lblNewLabel = new JLabel("My requests");
+        JLabel lblNewLabel = new JLabel("My addresses");
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 24));
         lblNewLabel.setBounds(158, 10, 385, 72);
         frame.getContentPane().add(lblNewLabel);
-
-        btnDelete = new JButton("Delete");
-        btnDelete.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 18));
-        btnDelete.setBounds(553, 46, 113, 33);
-        btnDelete.setVisible(false);
-        btnDelete.addActionListener(a->{
-            int selectedRow = table.getSelectedRow();
-            if(selectedRow!=-1) {
-                regularUserController.deleteRequest(table.getValueAt(selectedRow, 0).toString(), table.getValueAt(selectedRow, 2).toString());
-                JOptionPane.showMessageDialog(null, "Request deleted ",
-                        "SUCCESS", JOptionPane.PLAIN_MESSAGE);
-
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Please select one item ",
-                        "ERROR", JOptionPane.WARNING_MESSAGE);
-            clearTable();
-            update();
-        });
-        frame.getContentPane().add(btnDelete);
-
-        /*Image buttonIcon2 = new ImageIcon(this.getClass().getResource("/images/refresh.png")).getImage();
-        Image scaledImg2=buttonIcon2.getScaledInstance(20, 20, Image.SCALE_DEFAULT);
-        JButton refreshButton = new JButton(new ImageIcon(scaledImg2));
-        refreshButton.setBounds(500, 49, 43, 33);
-        refreshButton.setBorder(BorderFactory.createEmptyBorder());
-        refreshButton.setContentAreaFilled(false);
-        refreshButton.addActionListener(a->update());
-        frame.getContentPane().add(refreshButton);*/
 
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
@@ -125,29 +95,9 @@ public class RegularUserRequestsView {
     }
 
     private void initFrame(){
-        frame.setBounds(100, 100, 711, 448);
+        frame.setBounds(100, 100, 694, 442);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        update();
+        table = regularUserController.listAddressesInTable(userDTO,table);
         frame.setVisible(true);
     }
-
-    private void update(){
-        table = regularUserController.listRequests(user,table);
-    }
-
-    public void activateButton(){
-        btnDelete.setVisible(true);
-    }
-
-    private void clearTable(){
-        for(int row=table.getModel().getRowCount()-1; row>=0;row--)
-        {
-            table.setValueAt(null,row,0);
-            table.setValueAt(null,row,1);
-            table.setValueAt(null,row,2);
-            table.setValueAt(null,row,3);
-        }
-    }
-
 }
-

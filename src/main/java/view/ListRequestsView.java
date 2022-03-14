@@ -17,6 +17,8 @@ public class ListRequestsView {
     private AdminController adminController = new AdminController();
     private JTable table;
     private JButton btnApprove;
+    private JLabel lblSelect;
+    private JComboBox comboBox;
 
     public ListRequestsView() {
         initialize();
@@ -41,7 +43,7 @@ public class ListRequestsView {
                 JOptionPane.showMessageDialog(null, "Request approved ",
                         "SUCCESS", JOptionPane.PLAIN_MESSAGE);
             }
-            table = adminController.listRequestsInTable(table);
+            table = adminController.listRequestsInTable(table,null);
         });
         frame.getContentPane().add(btnApprove);
 
@@ -63,7 +65,7 @@ public class ListRequestsView {
         frame.getContentPane().add(lblNewLabel_1);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 92, 674, 317);
+        scrollPane.setBounds(10, 145, 674, 344);
         frame.getContentPane().add(scrollPane);
 
         table = new JTable();
@@ -94,24 +96,57 @@ public class ListRequestsView {
         lblNewLabel.setBounds(158, 10, 385, 72);
         frame.getContentPane().add(lblNewLabel);
 
+        comboBox = new JComboBox();
+        comboBox.setBounds(296, 106, 286, 29);
+        comboBox.setVisible(false);
+        comboBox.addActionListener(a->{
+            clearTable();
+            table = adminController.listRequestsInTable(table,comboBox.getSelectedItem().toString());
+        });
+        frame.getContentPane().add(comboBox);
+
+        lblSelect = new JLabel("Select document type");
+        lblSelect.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
+        lblSelect.setBounds(103, 106, 247, 29);
+        lblSelect.setVisible(false);
+        frame.getContentPane().add(lblSelect);
+
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
-        lblNewLabel_2.setBounds(0, 0, 684, 409);
+        lblNewLabel_2.setBounds(0, 0, 684, 489);
         Image img=new ImageIcon(this.getClass().getResource("/images/background2.jpg")).getImage();
-        Image scaledImage=img.getScaledInstance(750, 400, Image.SCALE_DEFAULT);
+        Image scaledImage=img.getScaledInstance(750, 500, Image.SCALE_DEFAULT);
         lblNewLabel_2.setIcon(new ImageIcon(scaledImage));
         frame.getContentPane().add(lblNewLabel_2);
     }
 
     private void initFrame(){
-        frame.setBounds(100, 100, 708, 456);
+        frame.setBounds(100, 100, 708, 536);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        adminController.listRequestsInTable(table);
+        clearTable();
+        table = adminController.listRequestsInTable(table,null);
         frame.setVisible(true);
     }
 
     public void activateButton(){
         btnApprove.setVisible(true);
+    }
+
+    public void activateSearch(){
+        lblSelect.setVisible(true);
+        comboBox.setVisible(true);
+        comboBox=adminController.addDocuments(comboBox);
+    }
+
+    private void clearTable(){
+        for(int row=table.getModel().getRowCount()-1; row>=0;row--)
+        {
+            table.setValueAt(null,row,0);
+            table.setValueAt(null,row,1);
+            table.setValueAt(null,row,2);
+            table.setValueAt(null,row,3);
+            table.setValueAt(null,row,4);
+        }
     }
 }
 

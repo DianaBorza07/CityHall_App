@@ -1,6 +1,7 @@
 package controller;
 
 import dto.UserDTO;
+import entity.Address;
 import entity.Request;
 import org.apache.commons.lang3.StringUtils;
 import service.RegularUserService;
@@ -64,13 +65,62 @@ public class RegularUserController {
             regularUserService.updateRequest(requestName,newName,documentType);
             JOptionPane.showMessageDialog(null, "Request updated successfully",
                 "SUCCESS", JOptionPane.PLAIN_MESSAGE);
-            message.delete(0,message.length());
-            message.append("Please select ");
         }
-        else {
+        else
             JOptionPane.showMessageDialog(null, message,
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
+        message.delete(0,message.length());
+        message.append("Please select ");
 
+    }
+
+    public void addAddress(UserDTO userDTO, String city, String street){
+        if(StringUtils.isEmpty(city))
+            message.append("city name ");
+        if(StringUtils.isEmpty(street))
+            message.append("street name ");
+        if(message.compareTo(new StringBuilder("Please select "))==0){
+            regularUserService.addNewAddress(userDTO,city,street);
+            JOptionPane.showMessageDialog(null, "Address added successfully",
+                    "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+        }
+        else JOptionPane.showMessageDialog(null, message,
+                "ERROR", JOptionPane.WARNING_MESSAGE);
+
+        message.delete(0,message.length());
+        message.append("Please select ");
+    }
+
+    public void deleteAddress(UserDTO user , String selected){
+        String[] str = selected.split(",");
+        String city = null;
+        String street = null;
+        if(str.length >=2){
+            city = str[0];
+            street = str[1];
+            regularUserService.deleteAddress(user,city,street);
+            JOptionPane.showMessageDialog(null, "Address deleted successfully",
+                    "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+        }
+        else JOptionPane.showMessageDialog(null, "Insufficient data, please select address",
+                "ERROR", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public JComboBox listAddressList(UserDTO userDTO,JComboBox comboBox){
+        List<String> addressList = regularUserService.getAddressList(userDTO);
+        addressList.stream().forEach(a->comboBox.addItem(a));
+        return comboBox;
+    }
+
+    public JTable listAddressesInTable(UserDTO user ,JTable table){
+        List<Address> addressList = regularUserService.getAllAddresses(user);
+        int row =0;
+        for (Address re:
+                addressList) {
+            table.setValueAt(re.getCity(),row,0);
+            table.setValueAt(re.getStreet(),row,1);
+            row++;
+        }
+        return table;
     }
 }

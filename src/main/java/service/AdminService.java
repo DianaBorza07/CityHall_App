@@ -6,6 +6,7 @@ import entity.Request;
 import entity.User;
 import repository.AdminRepo;
 
+import javax.print.Doc;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +34,6 @@ public class AdminService extends UserService{
         return adminRepo.createNewDocumentType(doc);
     }
 
-    /*public List<String> getAllDocumentsName(){
-        List<DocumentType> documentTypes = adminRepo.getAllDocuments();
-        List<String> documentNameList = new ArrayList<>();
-        documentTypes.stream().forEach(d->documentNameList.add(d.getDocumentType()));
-        return  documentNameList;
-    }*/
 
     public void deleteSelectedDocument(String doc){
         adminRepo.deleteDocument(doc);
@@ -47,4 +42,9 @@ public class AdminService extends UserService{
     public void deleteSelectedRequest(String request){adminRepo.deleteRequest(request);}
 
     public void approveRequest(String description, Date date){ adminRepo.approveRequest(description,date); }
+
+    public List<Request> getRequestsByType(String documentName){
+        DocumentType documentType = adminRepo.findDocumentByName(documentName);
+        return adminRepo.getRequestsByType(documentType);
+    }
 }

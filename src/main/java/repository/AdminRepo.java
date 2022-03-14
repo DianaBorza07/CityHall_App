@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.print.Doc;
 
 import java.sql.Date;
 import java.util.List;
@@ -81,6 +82,16 @@ public class AdminRepo extends UserRepo{
             em.getTransaction().commit();
             em.close();
         }
+    }
+
+    public List<Request> getRequestsByType(DocumentType documentType){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        String sql = "SELECT * FROM request WHERE document_type_id='"+documentType.getId()+"';";
+        Query query = em.createNativeQuery(sql,Request.class);
+        List<Request> requests = query.getResultList();
+        em.close();
+        return  requests;
     }
 
 
