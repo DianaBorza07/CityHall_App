@@ -1,9 +1,7 @@
 package view;
 
 import dto.UserDTO;
-import entity.User;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 

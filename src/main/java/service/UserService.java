@@ -33,7 +33,7 @@ public class UserService {
     }
 
     public Boolean isInAdminRole(UserDTO userDTO){
-        User user = userRepo.findUserByUsername(userDTO.getUsername());
+        User user = userRepo.findUserByUsername(userDTO.getEmail());
         if(user.getUserRole().getRoleName().equals("Administrator"))
             return true;
         return false;

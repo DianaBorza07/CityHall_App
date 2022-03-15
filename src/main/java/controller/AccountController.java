@@ -32,7 +32,7 @@ public class AccountController {
     public Boolean register(UserDTORegister userDTORegister){
         if(StringUtils.isEmpty(userDTORegister.getName()))
             insertMessage.append("name ");
-        if(StringUtils.isEmpty(userDTORegister.getUsername()))
+        if(StringUtils.isEmpty(userDTORegister.getEmail()))
             insertMessage.append("username ");
         if(StringUtils.isEmpty(userDTORegister.getPassword()))
             insertMessage.append("password ");

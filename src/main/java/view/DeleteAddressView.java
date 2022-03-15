@@ -2,7 +2,6 @@ package view;
 import controller.RegularUserController;
 import dto.UserDTO;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 

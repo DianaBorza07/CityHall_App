@@ -8,32 +8,32 @@ public class UserDTO {
 
     private String name;
 
-    private String username;
+    private String email;
 
     private String userRole;
 
-    public UserDTO(String name, String username,String role){
+    public UserDTO(String name, String email, String role){
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.userRole = role;
     }
 
-    public UserDTO(String id,String name, String username,String role){
+    public UserDTO(String id, String name, String email, String role){
         this.id = id;
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.userRole = role;
     }
 
     public UserDTO() {}
 
-    public UserDTO(String username){
-        this.username = username;
+    public UserDTO(String email){
+        this.email = email;
     }
 
-    public UserDTO(String name,String username){
+    public UserDTO(String name,String email){
         this.name = name;
-        this.username = username;
+        this.email = email;
     }
 
     public String getName() {
@@ -44,12 +44,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserRole() {
@@ -63,7 +63,7 @@ public class UserDTO {
     public User dtoToUser(){
         User user = new User();
         user.setName(this.name);
-        user.setUsername(this.username);
+        user.setEmail(this.email);
         user.setId(id);
         return user;
     }

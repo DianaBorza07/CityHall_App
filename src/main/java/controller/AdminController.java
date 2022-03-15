@@ -26,7 +26,7 @@ public class AdminController {
         for (UserDTO user:
              users ) {
              table.setValueAt(user.getName(),row,0);
-             table.setValueAt(user.getUsername(),row,1);
+             table.setValueAt(user.getEmail(),row,1);
              row++;
         }
         return table;

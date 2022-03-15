@@ -2,10 +2,6 @@ package view;
 
 import controller.RegularUserController;
 import dto.UserDTO;
-import entity.User;
-import service.RegularUserService;
-
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

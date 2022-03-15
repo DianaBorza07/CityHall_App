@@ -10,7 +10,7 @@ import java.awt.*;
 public class LoginView {
 
     private JFrame frame;
-    private JTextField username;
+    private JTextField email;
     private JPasswordField password;
     private AccountController accountController = new AccountController();
 
@@ -42,11 +42,11 @@ public class LoginView {
         });
         frame.getContentPane().add(backButton);
 
-        username = new JTextField();
-        username.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        username.setBounds(206, 60, 186, 29);
-        frame.getContentPane().add(username);
-        username.setColumns(10);
+        email = new JTextField();
+        email.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        email.setBounds(206, 60, 186, 29);
+        frame.getContentPane().add(email);
+        email.setColumns(10);
 
         password = new JPasswordField();
         password.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -54,7 +54,7 @@ public class LoginView {
         frame.getContentPane().add(password);
         password.setColumns(10);
 
-        JLabel lblUsername = new JLabel("Username");
+        JLabel lblUsername = new JLabel("Email");
         lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 15));
         lblUsername.setBounds(49, 65, 117, 16);
         frame.getContentPane().add(lblUsername);
@@ -73,14 +73,14 @@ public class LoginView {
         btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnLogin.setBounds(150, 179, 97, 29);
         btnLogin.addActionListener(a ->{
-            if(accountController.login(username.getText().toString(),password.getText().toString()))
-                if(accountController.isInAdminRole(new UserDTO(username.getText()))){
+            if(accountController.login(email.getText().toString(),password.getText().toString()))
+                if(accountController.isInAdminRole(new UserDTO(email.getText()))){
                     new AdminView();
                     frame.dispose();
                 }
             else {
-                User loggedUser = accountController.findUser(username.getText());
-                new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getUsername(),loggedUser.getUserRole().getRoleName()));
+                User loggedUser = accountController.findUser(email.getText());
+                new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getEmail(),loggedUser.getUserRole().getRoleName()));
                 frame.dispose();
                 }
 

@@ -5,14 +5,10 @@ import dto.UserDTO;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.*;
-import javax.swing.plaf.TableHeaderUI;
 import javax.swing.table.DefaultTableModel;
 
 public class RegularUserRequestsView {
@@ -106,14 +102,6 @@ public class RegularUserRequestsView {
         });
         frame.getContentPane().add(btnDelete);
 
-        /*Image buttonIcon2 = new ImageIcon(this.getClass().getResource("/images/refresh.png")).getImage();
-        Image scaledImg2=buttonIcon2.getScaledInstance(20, 20, Image.SCALE_DEFAULT);
-        JButton refreshButton = new JButton(new ImageIcon(scaledImg2));
-        refreshButton.setBounds(500, 49, 43, 33);
-        refreshButton.setBorder(BorderFactory.createEmptyBorder());
-        refreshButton.setContentAreaFilled(false);
-        refreshButton.addActionListener(a->update());
-        frame.getContentPane().add(refreshButton);*/
 
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));

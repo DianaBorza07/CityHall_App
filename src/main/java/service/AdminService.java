@@ -6,7 +6,6 @@ import entity.Request;
 import entity.User;
 import repository.AdminRepo;
 
-import javax.print.Doc;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class AdminService extends UserService{
         List<UserDTO> userDTOList = new ArrayList<>();
         for (User user :
              users) {
-            UserDTO newUser = new UserDTO(user.getName(),user.getUsername());
+            UserDTO newUser = new UserDTO(user.getName(),user.getEmail());
             userDTOList.add(newUser);
         }
         return userDTOList;

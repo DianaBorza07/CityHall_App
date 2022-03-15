@@ -13,7 +13,7 @@ public class RegisterView {
 
     private JFrame frame;
     private JTextField name;
-    private JTextField username;
+    private JTextField email;
     private JPasswordField password;
     private AccountController accountController = new AccountController();
 
@@ -61,7 +61,7 @@ public class RegisterView {
         lblName.setBounds(38, 135, 113, 32);
         frame.getContentPane().add(lblName);
 
-        JLabel lblUsername = new JLabel("Username");
+        JLabel lblUsername = new JLabel("Email");
         lblUsername.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
         lblUsername.setBounds(38, 200, 113, 22);
         frame.getContentPane().add(lblUsername);
@@ -77,11 +77,11 @@ public class RegisterView {
         frame.getContentPane().add(name);
         name.setColumns(10);
 
-        username = new JTextField();
-        username.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
-        username.setBounds(197, 200, 276, 24);
-        frame.getContentPane().add(username);
-        username.setColumns(10);
+        email = new JTextField();
+        email.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+        email.setBounds(197, 200, 276, 24);
+        frame.getContentPane().add(email);
+        email.setColumns(10);
 
         password = new JPasswordField();
         password.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
@@ -106,23 +106,23 @@ public class RegisterView {
         btnRegister.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 20));
         btnRegister.setBounds(197, 402, 125, 43);
         btnRegister.addActionListener(a-> {
-            UserDTORegister userDTO = new UserDTORegister(name.getText(), username.getText(), password.getText(),comboBox.getSelectedItem().toString());
+            UserDTORegister userDTO = new UserDTORegister(name.getText(), email.getText(), password.getText(),comboBox.getSelectedItem().toString());
             if(accountController.register(userDTO)) {
                 Object[] options = {"OK"};
                 int val = JOptionPane.showOptionDialog(null, "Account created successfully!", "", JOptionPane.OK_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
                 if (options[0].equals(val) && val >= 0) ;
                 {
-                    UserDTO userDTO1 = new UserDTO(userDTO.getName(), userDTO.getUsername(), userDTO.getUserRole());
+                    UserDTO userDTO1 = new UserDTO(userDTO.getName(), userDTO.getEmail(), userDTO.getUserRole());
                     name.setText("");
                     password.setText("");
-                    username.setText("");
+                    email.setText("");
                     if (accountController.isInAdminRole(userDTO1)) {
                         new AdminView();
                         frame.dispose();
                     }
                     else {
-                        User loggedUser = accountController.findUser(userDTO1.getUsername());
-                        new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getUsername(),loggedUser.getUserRole().getRoleName()));
+                        User loggedUser = accountController.findUser(userDTO1.getEmail());
+                        new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getEmail(),loggedUser.getUserRole().getRoleName()));
                         frame.dispose();
                     }
                 }

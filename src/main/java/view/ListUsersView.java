@@ -1,10 +1,8 @@
 package view;
 
 import controller.AdminController;
-import dto.UserDTO;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -65,7 +63,7 @@ public class ListUsersView {
         table.setModel(new DefaultTableModel(
                 new Object[30][30] ,
                 new String[] {
-                        "Name", "Username"
+                        "Name", "Email"
                 }
         ));
 

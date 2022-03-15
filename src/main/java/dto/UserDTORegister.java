@@ -6,15 +6,15 @@ public class UserDTORegister {
 
     private String name;
 
-    private String username;
+    private String email;
 
     private String password;
 
     private String userRole;
 
-    public UserDTORegister(String name, String username, String password,String role){
+    public UserDTORegister(String name, String email, String password, String role){
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.password = password;
         this.userRole = role;
     }
@@ -29,12 +29,12 @@ public class UserDTORegister {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -56,7 +56,7 @@ public class UserDTORegister {
     public User userDTOToUser(){
         User user = new User();
         user.setName(this.name);
-        user.setUsername(this.username);
+        user.setEmail(this.email);
         user.setPassword(this.password);
         return user;
     }

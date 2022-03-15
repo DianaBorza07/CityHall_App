@@ -17,7 +17,7 @@ public class UserRepo {
 	private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
 	
 	public Boolean insertNewUser(User user) {
-		if(findUserByUsername(user.getUsername())!=null)
+		if(findUserByUsername(user.getEmail())!=null)
 			return false;
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
