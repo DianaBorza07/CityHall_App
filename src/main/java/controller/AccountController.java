@@ -42,7 +42,7 @@ public class AccountController {
             if (userService.register(userDTORegister))
                 return  true;
             else {
-                JOptionPane.showMessageDialog(null, "Username already exists. Please insert new one",
+                JOptionPane.showMessageDialog(null, "Email already exists. Please insert new one",
                         "ERROR", JOptionPane.WARNING_MESSAGE);
                 return false;
             }

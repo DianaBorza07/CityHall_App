@@ -77,7 +77,7 @@ public class DeleteAddressView {
         Image scaledImg1=buttonIcon1.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
 
         JButton confirmButton = new JButton(new ImageIcon(scaledImg1));
-        confirmButton.setBounds(236, 171, 85, 57);
+        confirmButton.setBounds(236, 165, 85, 57);
         confirmButton.setBorder(BorderFactory.createEmptyBorder());
         confirmButton.setContentAreaFilled(false);
         confirmButton.addActionListener(a->{

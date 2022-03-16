@@ -43,7 +43,9 @@ public class AdminController {
             table.setValueAt(result.getDocumentType().getDocumentType(),row,1);
             table.setValueAt(result.getDate(),row,2);
             table.setValueAt(result.getApproved(),row,3);
-            table.setValueAt(result.getRequestUser().getName(),row,4);
+            table.setValueAt(result.getAddress().getUser().getName(),row,4);
+            table.setValueAt(result.getAddress().getStreet(),row,5);
+            table.setValueAt(result.getAddress().getNumber(),row,6);
             row++;
         }
         return table;

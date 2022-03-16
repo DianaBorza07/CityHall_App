@@ -68,7 +68,7 @@ public class AddressView {
         table.setModel(new DefaultTableModel(
                 new Object[30][30] ,
                 new String[] {
-                        "City","Street"
+                        "Street","Number"
                 }
         ));
 

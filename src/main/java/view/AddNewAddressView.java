@@ -17,8 +17,8 @@ import javax.swing.JTextField;
 public class AddNewAddressView {
 
     private JFrame frame;
-    private JTextField city;
     private JTextField street;
+    private JTextField streetNb;
     private RegularUserController regularUserController= new RegularUserController();
     private UserDTO userDTO;
 
@@ -42,26 +42,27 @@ public class AddNewAddressView {
         lblTitle.setBounds(144, 10, 254, 60);
         frame.getContentPane().add(lblTitle);
 
-        JLabel lblCity = new JLabel("Insert city");
-        lblCity.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
-        lblCity.setBounds(55, 124, 119, 34);
-        frame.getContentPane().add(lblCity);
-
-        city = new JTextField();
-        city.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
-        city.setBounds(232, 124, 248, 30);
-        frame.getContentPane().add(city);
-        city.setColumns(10);
-
         JLabel lblStreet = new JLabel("Insert street name");
         lblStreet.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
-        lblStreet.setBounds(55, 230, 169, 24);
+        lblStreet.setBounds(55, 124, 139, 34);
         frame.getContentPane().add(lblStreet);
 
         street = new JTextField();
-        street.setBounds(232, 230, 254, 30);
+        street.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+        street.setBounds(232, 124, 248, 30);
         frame.getContentPane().add(street);
         street.setColumns(10);
+
+        JLabel lblStreetNb = new JLabel("Insert street number");
+        lblStreetNb.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+        lblStreetNb.setBounds(55, 230, 169, 24);
+        frame.getContentPane().add(lblStreetNb);
+
+        streetNb = new JTextField();
+        streetNb.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN,17));
+        streetNb.setBounds(232, 230, 254, 30);
+        frame.getContentPane().add(streetNb);
+        streetNb.setColumns(10);
 
         Image buttonIcon1 = new ImageIcon(this.getClass().getResource("/images/ok.png")).getImage();
         Image scaledImg1=buttonIcon1.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
@@ -71,9 +72,9 @@ public class AddNewAddressView {
         confirmButton.setBorder(BorderFactory.createEmptyBorder());
         confirmButton.setContentAreaFilled(false);
         confirmButton.addActionListener(a->{
-            regularUserController.addAddress(userDTO,city.getText(),street.getText());
-            city.setText("");
+            regularUserController.addAddress(userDTO, street.getText(), streetNb.getText());
             street.setText("");
+            streetNb.setText("");
         });
         frame.getContentPane().add(confirmButton);
 

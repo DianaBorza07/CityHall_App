@@ -21,6 +21,7 @@ public class AddNewRequestView {
     private JTextField description;
     private JComboBox comboBox;
     private UserDTO userDTO;
+    private JComboBox comboAddress;
     private RegularUserController userController= new RegularUserController();
 
     public AddNewRequestView() {
@@ -67,12 +68,12 @@ public class AddNewRequestView {
         Image scaledImg1=buttonIcon1.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
 
         JButton confirmButton = new JButton(new ImageIcon(scaledImg1));
-        confirmButton.setBounds(324, 287, 85, 57);
+        confirmButton.setBounds(324, 366, 85, 57);
         confirmButton.setBorder(BorderFactory.createEmptyBorder());
         confirmButton.setContentAreaFilled(false);
         confirmButton.addActionListener(a-> {
             try {
-                userController.addRequest(userDTO,description.getText(),comboBox.getSelectedItem().toString());
+                userController.addRequest(userDTO,description.getText(),comboBox.getSelectedItem().toString(),comboAddress.getSelectedItem().toString());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -82,13 +83,13 @@ public class AddNewRequestView {
 
         JLabel lblOk = new JLabel("<html>Confirm selection</html>");
         lblOk.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
-        lblOk.setBounds(336, 339, 104, 40);
+        lblOk.setBounds(336, 418, 104, 40);
         frame.getContentPane().add(lblOk);
 
         Image buttonIcon = new ImageIcon(this.getClass().getResource("/images/back.png")).getImage();
         Image scaledImg=buttonIcon.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         JButton backButton = new JButton(new ImageIcon(scaledImg));
-        backButton.setBounds(10, 350, 56, 57);
+        backButton.setBounds(10, 429, 56, 57);
         backButton.setBorder(BorderFactory.createEmptyBorder());
         backButton.setContentAreaFilled(false);
         backButton.addActionListener(a->{
@@ -99,21 +100,32 @@ public class AddNewRequestView {
 
         JLabel lblNewLabel_1 = new JLabel("back");
         lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        lblNewLabel_1.setBounds(20, 398, 51, 16);
+        lblNewLabel_1.setBounds(20, 477, 51, 16);
         frame.getContentPane().add(lblNewLabel_1);
+
+        JLabel lblAddress = new JLabel("Select address");
+        lblAddress.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 20));
+        lblAddress.setBounds(54, 297, 207, 27);
+        frame.getContentPane().add(lblAddress);
+
+        comboAddress = new JComboBox();
+        comboAddress.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 20));
+        comboAddress.setBounds(306, 297, 310, 29);
+        frame.getContentPane().add(comboAddress);
 
         JLabel lblNewLabel = new JLabel("");
         Image img=new ImageIcon(this.getClass().getResource("/images/background4.jpg")).getImage();
         Image imgScaled = img.getScaledInstance(800, 500, Image.SCALE_DEFAULT);
         lblNewLabel.setIcon(new ImageIcon(imgScaled));
-        lblNewLabel.setBounds(0, 0, 654, 424);
+        lblNewLabel.setBounds(0, 0, 654, 503);
         frame.getContentPane().add(lblNewLabel);
     }
 
     private void initFrame(){
-        frame.setBounds(100, 100, 668, 461);
+        frame.setBounds(100, 100, 668, 540);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         comboBox = userController.getDocumentsType(comboBox);
+        comboAddress = userController.listAddressList(userDTO,comboAddress);
         frame.setVisible(true);
     }
 

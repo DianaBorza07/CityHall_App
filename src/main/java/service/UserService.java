@@ -33,14 +33,14 @@ public class UserService {
     }
 
     public Boolean isInAdminRole(UserDTO userDTO){
-        User user = userRepo.findUserByUsername(userDTO.getEmail());
+        User user = userRepo.findUserByEmail(userDTO.getEmail());
         if(user.getUserRole().getRoleName().equals("Administrator"))
             return true;
         return false;
     }
 
     public User findUserByUsername(String username){
-        return userRepo.findUserByUsername(username);
+        return userRepo.findUserByEmail(username);
     }
 
     public List<String> getAllDocumentsName(){

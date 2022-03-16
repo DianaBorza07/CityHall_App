@@ -52,7 +52,7 @@ public class RegularUserRequestsView {
         frame.getContentPane().add(lblNewLabel_1);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 92, 674, 317);
+        scrollPane.setBounds(10, 92, 728, 317);
         frame.getContentPane().add(scrollPane);
 
         table = new JTable();
@@ -63,7 +63,7 @@ public class RegularUserRequestsView {
         table.setModel(new DefaultTableModel(
                 new Object[30][30] ,
                 new String[] {
-                        "Description","Document type","Date","Approved"
+                        "Description","Document type","Date","Approved","Address street","Address number"
                 }
         ));
 
@@ -71,6 +71,8 @@ public class RegularUserRequestsView {
         table.getColumnModel().getColumn(1).setPreferredWidth(40);
         table.getColumnModel().getColumn(2).setPreferredWidth(40);
         table.getColumnModel().getColumn(3).setPreferredWidth(40);
+        table.getColumnModel().getColumn(4).setPreferredWidth(40);
+        table.getColumnModel().getColumn(5).setPreferredWidth(40);
         table.getTableHeader().setPreferredSize(new Dimension(scrollPane.getWidth(),20));
         table.getTableHeader().setReorderingAllowed(false);
         table.setRowHeight(35);
@@ -105,7 +107,7 @@ public class RegularUserRequestsView {
 
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
-        lblNewLabel_2.setBounds(0, 0, 684, 409);
+        lblNewLabel_2.setBounds(0, 0, 750, 409);
         Image img=new ImageIcon(this.getClass().getResource("/images/background2.jpg")).getImage();
         Image scaledImage=img.getScaledInstance(750, 400, Image.SCALE_DEFAULT);
         lblNewLabel_2.setIcon(new ImageIcon(scaledImage));
@@ -113,7 +115,7 @@ public class RegularUserRequestsView {
     }
 
     private void initFrame(){
-        frame.setBounds(100, 100, 711, 448);
+        frame.setBounds(100, 100, 762, 448);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         update();
         frame.setVisible(true);
@@ -134,6 +136,8 @@ public class RegularUserRequestsView {
             table.setValueAt(null,row,1);
             table.setValueAt(null,row,2);
             table.setValueAt(null,row,3);
+            table.setValueAt(null,row,4);
+            table.setValueAt(null,row,5);
         }
     }
 

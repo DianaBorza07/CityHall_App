@@ -5,10 +5,7 @@ import entity.Request;
 import entity.User;
 import entity.UserRole;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class UserRepo {
 	private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ro.tutorial.lab.SD");
 	
 	public Boolean insertNewUser(User user) {
-		if(findUserByUsername(user.getEmail())!=null)
+		if(findUserByEmail(user.getEmail())!=null)
 			return false;
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
@@ -31,7 +28,7 @@ public class UserRepo {
 	public User findUserByCredentials(String username, String password){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		StringBuilder sqlQuery = new StringBuilder("SELECT * FROM user WHERE username='");
+		StringBuilder sqlQuery = new StringBuilder("SELECT * FROM user WHERE email='");
 		sqlQuery.append(username);
 		sqlQuery.append("' and password='");
 		sqlQuery.append(password);
@@ -43,16 +40,22 @@ public class UserRepo {
 		return  user;
 	}
 
-	public User findUserByUsername(String username){
+	public User findUserByEmail(String email){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		StringBuilder sqlQuery = new StringBuilder("SELECT * FROM user WHERE username='");
-		sqlQuery.append(username);
+		StringBuilder sqlQuery = new StringBuilder("SELECT * FROM user WHERE email='");
+		sqlQuery.append(email);
 		sqlQuery.append("';");
 		Query query = em.createNativeQuery(sqlQuery.toString(),User.class);
-		List<User> results = query.getResultList();
+		List<User> results = null;
+		try{
+			results = query.getResultList();
+		}
+		catch (PersistenceException e){
+
+		}
 		User user=null;
-		if(results.size()!=0)
+		if(results != null && !results.isEmpty() && results.size()!=0)
 			user = results.get(0);
 		em.close();
 		return  user;

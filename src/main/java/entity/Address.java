@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "address")
@@ -9,7 +10,7 @@ public class Address {
     private String id;
 
     @Column
-    private String city;
+    private String number;
 
     @Column
     private String street;
@@ -18,18 +19,21 @@ public class Address {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "address")
+    private List<Request> requestList;
+
     public Address(String name) {
-        this.city = name;
+        this.number = name;
     }
 
     public Address() {}
 
-    public String getCity() {
-        return city;
+    public String getNumber() {
+        return number;
     }
 
-    public void setCity(String name) {
-        this.city = name;
+    public void setNumber(String name) {
+        this.number = name;
     }
 
     public String getId() {

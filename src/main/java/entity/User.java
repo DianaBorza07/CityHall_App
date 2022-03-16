@@ -26,8 +26,8 @@ public class User {
 	@JoinColumn(name = "user_role_id")
 	private UserRole userRole;
 
-	@OneToMany( mappedBy = "requestUser")
-	private List<Request> requests;
+	//@OneToMany( mappedBy = "requestUser")
+	//private List<Request> requests;
 
 
 	public User(String name) {
@@ -80,7 +80,7 @@ public class User {
 		this.userRole = userRole;
 	}
 
-	public List<Request> getRequests() {
+	/*public List<Request> getRequests() {
 		return requests;
-	}
+	}*/
 }

@@ -24,8 +24,12 @@ public class Request {
     private DocumentType documentType;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User requestUser;
+    @JoinColumn(name="address_id")
+    private Address address;
+
+    //@ManyToOne
+    //@JoinColumn(name = "user_id")
+    //private User requestUser;
 
     public Request(){}
 
@@ -69,11 +73,19 @@ public class Request {
         this.description = description;
     }
 
-    public User getRequestUser() {
+    /*public User getRequestUser() {
         return requestUser;
     }
 
     public void setRequestUser(User requestUser) {
         this.requestUser = requestUser;
+    }*/
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

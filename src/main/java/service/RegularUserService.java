@@ -18,10 +18,19 @@ public class RegularUserService extends UserService{
     private RegularUserRepo regularUserRepo = new RegularUserRepo();
 
     public List<Request> getRequests(UserDTO user){
-        return regularUserRepo.findRequests(user);
+        User user1 = regularUserRepo.findUserById(user.getId());
+        List<Address> addressList = regularUserRepo.getAllAddresses(user1);
+        List<Request> auxList = new ArrayList<>();
+        List<Request> finalList = new ArrayList<>();
+        for (Address a:
+             addressList) {
+            auxList = regularUserRepo.findRequests(a);
+            auxList.stream().forEach(e->finalList.add(e));
+        }
+        return finalList;
     }
 
-    public Boolean addNewRequest(UserDTO userDTO, String description, String docName) throws ParseException {
+    public Boolean addNewRequest(UserDTO userDTO, String description, String docName, String number, String street) throws ParseException {
         DocumentType documentType = regularUserRepo.findDocumentByName(docName);
         long millis=System.currentTimeMillis();
         Date date = new Date(millis);
@@ -31,7 +40,9 @@ public class RegularUserService extends UserService{
         request.setDocumentType(documentType);
         request.setDescription(description);
         request.setDate(date);
-        request.setRequestUser(user);
+       // request.setRequestUser(user);
+        Address address1 = regularUserRepo.getAddressByName(user,number,street);
+        request.setAddress(address1);
         request.setId(UUID.randomUUID().toString());
         if(regularUserRepo.getNumberOfRequests(request).compareTo(BigInteger.valueOf(3))>=0)
             return false;
@@ -49,19 +60,19 @@ public class RegularUserService extends UserService{
         regularUserRepo.updateRequest(requestName,newName,document);
     }
 
-    public void addNewAddress(UserDTO userDTO, String city, String street){
+    public void addNewAddress(UserDTO userDTO, String street, String streetNb){
         User user = regularUserRepo.findUserById(userDTO.getId());
         Address address = new Address();
         address.setId(UUID.randomUUID().toString());
         address.setUser(user);
-        address.setCity(city);
+        address.setNumber(streetNb);
         address.setStreet(street);
         regularUserRepo.addAddress(address);
     }
 
-    public void deleteAddress(UserDTO userDTO, String city, String street){
+    public void deleteAddress(UserDTO userDTO, String number, String street){
         User user = regularUserRepo.findUserById(userDTO.getId());
-        Address address = regularUserRepo.findAddress(user,city,street);
+        Address address = regularUserRepo.findAddress(user,number,street);
         regularUserRepo.deleteAddress(address);
     }
 
@@ -69,7 +80,7 @@ public class RegularUserService extends UserService{
         User user = regularUserRepo.findUserById(userDTO.getId());
         List<Address> addressList = regularUserRepo.getAllAddresses(user);
         List<String> addressAsString = new ArrayList<>();
-        addressList.stream().forEach(a->addressAsString.add(a.getCity()+","+a.getStreet()));
+        addressList.stream().forEach(a->addressAsString.add(a.getStreet()+","+a.getNumber()));
         return addressAsString;
     }
 

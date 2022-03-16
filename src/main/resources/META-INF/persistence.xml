@@ -7,7 +7,7 @@
 
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/labps"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/labpscopy"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="Diana07#"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

@@ -8,26 +8,22 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/UserDTORegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserDTORegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AdminRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewAddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewAddressView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddressView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/DeleteAddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/DeleteAddressView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/DeleteDocumentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/DeleteDocumentView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/DeleteRequestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/DeleteRequestView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ListUsersView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ListUsersView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegularUserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegularUserView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WelcomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +91,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ApplicationStart" />
@@ -113,7 +120,8 @@
       <workItem from="1646924574463" duration="6739000" />
       <workItem from="1647076339089" duration="63666000" />
       <workItem from="1647201693277" duration="20211000" />
-      <workItem from="1647371855714" duration="2668000" />
+      <workItem from="1647371855714" duration="2936000" />
+      <workItem from="1647441311816" duration="7841000" />
     </task>
     <servers />
   </component>

@@ -64,7 +64,7 @@ public class ListRequestsView {
         frame.getContentPane().add(lblNewLabel_1);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 145, 674, 344);
+        scrollPane.setBounds(10, 145, 744, 344);
         frame.getContentPane().add(scrollPane);
 
         table = new JTable();
@@ -75,7 +75,7 @@ public class ListRequestsView {
         table.setModel(new DefaultTableModel(
                 new Object[30][30] ,
                 new String[] {
-                        "Description","Document type","Date","Approved","User name"
+                        "Description","Document type","Date","Approved","User name","Address street","Address number"
                 }
         ));
 
@@ -84,6 +84,8 @@ public class ListRequestsView {
         table.getColumnModel().getColumn(2).setPreferredWidth(40);
         table.getColumnModel().getColumn(3).setPreferredWidth(40);
         table.getColumnModel().getColumn(4).setPreferredWidth(40);
+        table.getColumnModel().getColumn(5).setPreferredWidth(40);
+        table.getColumnModel().getColumn(6).setPreferredWidth(40);
         table.getTableHeader().setPreferredSize(new Dimension(scrollPane.getWidth(),20));
         table.getTableHeader().setReorderingAllowed(false);
         table.setRowHeight(35);
@@ -112,7 +114,7 @@ public class ListRequestsView {
 
         JLabel lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
-        lblNewLabel_2.setBounds(0, 0, 684, 489);
+        lblNewLabel_2.setBounds(0, 0, 750, 489);
         Image img=new ImageIcon(this.getClass().getResource("/images/background2.jpg")).getImage();
         Image scaledImage=img.getScaledInstance(750, 500, Image.SCALE_DEFAULT);
         lblNewLabel_2.setIcon(new ImageIcon(scaledImage));
@@ -120,7 +122,7 @@ public class ListRequestsView {
     }
 
     private void initFrame(){
-        frame.setBounds(100, 100, 708, 536);
+        frame.setBounds(100, 100, 764, 533);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         clearTable();
         table = adminController.listRequestsInTable(table,null);
@@ -145,6 +147,8 @@ public class ListRequestsView {
             table.setValueAt(null,row,2);
             table.setValueAt(null,row,3);
             table.setValueAt(null,row,4);
+            table.setValueAt(null,row,5);
+            table.setValueAt(null,row,6);
         }
     }
 }

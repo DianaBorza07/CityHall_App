@@ -26,10 +26,10 @@ public class RegularUserRepo extends UserRepo{
         return  user;
     }
 
-    public List<Request> findRequests(UserDTO user){
+    public List<Request> findRequests(Address address){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        String sql = "SELECT * FROM request where user_id='"+user.getId()+"';";
+        String sql = "SELECT * FROM request where address_id='"+address.getId()+"';";
         Query query = em.createNativeQuery(sql,Request.class);
         List<Request> requests = query.getResultList();
         em.close();
@@ -48,7 +48,7 @@ public class RegularUserRepo extends UserRepo{
     public BigInteger getNumberOfRequests(Request request){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        String sql = "SELECT count(id) FROM request where user_id='"+request.getRequestUser().getId()+"' and document_type_id='"+request.getDocumentType().getId()+"';";
+        String sql = "SELECT count(id) FROM request where address_id='"+request.getAddress().getId()+"' and document_type_id='"+request.getDocumentType().getId()+"';";
         Query query = em.createNativeQuery(sql);
         BigInteger val = (BigInteger) query.getSingleResult();
         em.close();
@@ -85,13 +85,13 @@ public class RegularUserRepo extends UserRepo{
         em.close();
     }
 
-    public Address findAddress(User user, String city, String street){
+    public Address findAddress(User user, String number, String street){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         StringBuilder sql = new StringBuilder("SELECT * FROM address WHERE user_id='");
         sql.append(user.getId());
-        sql.append("' and city='");
-        sql.append(city);
+        sql.append("' and number='");
+        sql.append(number);
         sql.append("' and street='");
         sql.append(street);
         sql.append("';");
@@ -118,5 +118,15 @@ public class RegularUserRepo extends UserRepo{
         em.remove(request1);
         em.getTransaction().commit();
         em.close();
+    }
+
+    public Address getAddressByName(User user, String number, String street){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        String sql = "SELECT * FROM address WHERE user_id='"+user.getId()+"' and number='"+number+"' and street='"+street+"';";
+        Query query = em.createNativeQuery(sql,Address.class);
+        List<Address> addressList = query.getResultList();
+        em.close();
+        return  addressList.get(0);
     }
 }

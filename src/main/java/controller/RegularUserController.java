@@ -24,13 +24,16 @@ public class RegularUserController {
             table.setValueAt(re.getDocumentType().getDocumentType(),row,1);
             table.setValueAt(re.getDate(),row,2);
             table.setValueAt(re.getApproved(),row,3);
+            table.setValueAt(re.getAddress().getStreet(),row,4);
+            table.setValueAt(re.getAddress().getNumber(),row,5);
             row++;
         }
         return table;
     }
 
-    public void addRequest(UserDTO user, String description, String docType) throws ParseException {
-        if(regularUserService.addNewRequest(user,description,docType))
+    public void addRequest(UserDTO user, String description, String docType,String address) throws ParseException {
+        String[] aux = address.split(",");
+        if(regularUserService.addNewRequest(user,description,docType,aux[1],aux[0]))
             JOptionPane.showMessageDialog(null, "Request added",
                     "SUCCESS", JOptionPane.PLAIN_MESSAGE);
         else JOptionPane.showMessageDialog(null, "You cannot add more than three requests of same document type",
@@ -93,12 +96,12 @@ public class RegularUserController {
 
     public void deleteAddress(UserDTO user , String selected){
         String[] str = selected.split(",");
-        String city = null;
+        String number = null;
         String street = null;
         if(str.length >=2){
-            city = str[0];
-            street = str[1];
-            regularUserService.deleteAddress(user,city,street);
+            street = str[0];
+            number = str[1];
+            regularUserService.deleteAddress(user,number,street);
             JOptionPane.showMessageDialog(null, "Address deleted successfully",
                     "SUCCESS", JOptionPane.PLAIN_MESSAGE);
         }
@@ -117,8 +120,8 @@ public class RegularUserController {
         int row =0;
         for (Address re:
                 addressList) {
-            table.setValueAt(re.getCity(),row,0);
-            table.setValueAt(re.getStreet(),row,1);
+            table.setValueAt(re.getNumber(),row,1);
+            table.setValueAt(re.getStreet(),row,0);
             row++;
         }
         return table;
