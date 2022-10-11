@@ -73,17 +73,17 @@ public class LoginView {
         btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnLogin.setBounds(150, 179, 97, 29);
         btnLogin.addActionListener(a ->{
-            if(accountController.login(email.getText(),password.getText()))
-                if(accountController.isInAdminRole(new UserDTO(email.getText()))){
+            if(accountController.login(email.getText(),password.getText())) {
+                if (accountController.isInAdminRole(new UserDTO(email.getText()))) {
                     new AdminView();
                     frame.dispose();
+                } else {
+                    User loggedUser = accountController.findUser(email.getText());
+                    new RegularUserView(new UserDTO(loggedUser.getId(), loggedUser.getName(), loggedUser.getEmail(), loggedUser.getUserRole().getRoleName()));
+                    frame.dispose();
                 }
-            else {
-                User loggedUser = accountController.findUser(email.getText());
-                new RegularUserView(new UserDTO(loggedUser.getId(),loggedUser.getName(),loggedUser.getEmail(),loggedUser.getUserRole().getRoleName()));
-                frame.dispose();
-                }
-
+            }
+            else JOptionPane.showMessageDialog(null,"User not found","ERROR",JOptionPane.ERROR_MESSAGE);
         });
         frame.getContentPane().add(btnLogin);
 

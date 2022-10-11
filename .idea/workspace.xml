@@ -6,24 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="002231c6-3fc9-4b07-8683-a13db9b57732" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlScript.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sqlScript.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegularUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/DocumentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/DocumentType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RegularUserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RegularUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewAddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewAddressView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddNewRequestView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddressView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/DeleteAddressView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/DeleteAddressView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ListRequestsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegularUserRequestsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tema2/ps-2022-30235-a2-DianaBorza07" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -91,17 +81,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ApplicationStart" />
@@ -121,7 +100,15 @@
       <workItem from="1647076339089" duration="63666000" />
       <workItem from="1647201693277" duration="20211000" />
       <workItem from="1647371855714" duration="2936000" />
-      <workItem from="1647441311816" duration="7841000" />
+      <workItem from="1647441311816" duration="8449000" />
+      <workItem from="1647460207826" duration="996000" />
+      <workItem from="1647529315583" duration="5246000" />
+      <workItem from="1647598306085" duration="4421000" />
+      <workItem from="1647950081551" duration="57000" />
+      <workItem from="1648113323268" duration="2475000" />
+      <workItem from="1648134552268" duration="47000" />
+      <workItem from="1649075864461" duration="1109000" />
+      <workItem from="1649340360970" duration="60000" />
     </task>
     <servers />
   </component>

@@ -26,8 +26,7 @@ public class AccountController {
             errorMessage.append("Missing ");
             return false;
         }
-        userService.login(username,password);
-        return true;
+        return userService.login(username,password);
     }
     public Boolean register(UserDTORegister userDTORegister){
         if(StringUtils.isEmpty(userDTORegister.getName()))

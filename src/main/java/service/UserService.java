@@ -16,12 +16,16 @@ public class UserService {
     private UserRepo userRepo = new UserRepo();
     private UserRoleRepo userRoleRepo = new UserRoleRepo();
 
-    public void login(String username, String password){
+    public Boolean login(String username, String password){
 
         User user = userRepo.findUserByCredentials(username,password);
-        if(user == null) System.err.println("User not found!");
+        if(user == null) {
+            System.err.println("User not found!");
+            return  false;
+        }
         else
             System.out.println("User logged in!");
+        return true;
     }
 
     public Boolean register(UserDTORegister user){

@@ -111,6 +111,7 @@ public class RegularUserRepo extends UserRepo{
         return  addressList;
     }
 
+
     public void deleteAddress(Address address){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();

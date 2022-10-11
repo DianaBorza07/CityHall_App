@@ -13,7 +13,7 @@ public class DocumentType {
     @Column
     private String documentType;
 
-    @OneToMany( mappedBy = "documentType")
+    @OneToMany( cascade = CascadeType.ALL,mappedBy = "documentType")
     private List<Request> requests;
 
     public DocumentType() {}

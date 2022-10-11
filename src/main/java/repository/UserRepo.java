@@ -34,8 +34,14 @@ public class UserRepo {
 		sqlQuery.append(password);
 		sqlQuery.append("';");
 		Query query = em.createNativeQuery(sqlQuery.toString(),User.class);
-		List<User> results = query.getResultList();
-		User user = results.get(0);
+		List<User> results = results = query.getResultList();
+		User user = null;
+		try {
+			user = results.get(0);
+		}
+		catch(IndexOutOfBoundsException e){
+
+		}
 		em.close();
 		return  user;
 	}
